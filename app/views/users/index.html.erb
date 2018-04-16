@@ -1,5 +1,14 @@
-
-<% @users.each do |chef|%>
-  <%= link_to "#{chef.name}", '/'%> <%="| #{chef.location_lat} | #{chef.location_lon}" %>
-  <br>
-<% end %>
+<table id="homepage_table">
+  <tr>
+    <th>Chef</th>
+    <th>Location (lat)</th>
+    <th>Location (lon)</th>
+  </tr>
+  <% @users.each do |chef|%>
+    <tr>
+      <td><%= link_to chef.name, '/' %></td>
+      <td><%= chef.location_lat %></td>
+      <td><%= chef.location_lon %></td>
+    </tr>
+  <% end %>
+</table>
