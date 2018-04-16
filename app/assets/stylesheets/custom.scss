@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.content{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#nav-bar {
+  position: relative;
+  height: 110px;
+  border-bottom: 2px solid #000;
+
+}
+#nav-bar img {
+  position: relative;
+  display: inline-block;
+  height: 120px;
+  margin-top:-10px;
+}
+
+#nav-bar h1{
+  position: absolute;
+  display: inline-block;
+  top: 20px;
+  font-size: 4rem;
+  font-family: Ubuntu;
+}
+#login a {
+  position: absolute;
+  right: 40px;
+  top: 10px;
+  text-decoration: none;
+
+}
+#register a {
+  position: absolute;
+  text-decoration: none;
+  right: 100px;
+  top: 10px;
+}
+#logout a {
+  position: absolute;
+  text-decoration: none;
+  right: 50px;
+  top: 10px;
+}

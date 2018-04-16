@@ -1,1 +1,5 @@
-Hello World
+
+<% @users.each do |chef|%>
+  <%= link_to "#{chef.name}", '/'%> <%="| #{chef.location_lat} | #{chef.location_lon}" %>
+  <br>
+<% end %>

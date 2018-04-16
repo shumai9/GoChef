@@ -1,0 +1,15 @@
+<header>
+  <div id="nav-bar">
+    <%= image_tag("original_logo.png") %>
+    <h1>Go Chef</h1>
+    <div class="nav-links">
+      <% if current_user %>
+         <div id="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete %></div>
+       <% else %>
+         <div id="register"><%= link_to "Register", new_user_registration_path %></div>
+         <div id="login"><%= link_to "Login", new_user_session_path %></div>
+      <% end %>
+    </div>
+  </div>
+
+</header>
