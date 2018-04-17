@@ -7,7 +7,7 @@
   <% @users.each do |chef|%>
     <tr>
       <td class="chef-name"><%= link_to "#{chef.name}", '/'%></td>
-      <td>   <%="#{chef.location_lat} | #{chef.location_lon}"%></td>
+      <td>   <%="#{sprintf("%.3f", chef.location_lat)} | #{sprintf("%.3f", chef.location_lon)}"%></td>
     </tr>
   <% end %>
 </table>
