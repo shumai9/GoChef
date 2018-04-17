@@ -1,3 +1,4 @@
+<h2> Chefs: </h2>            
 <table id="homepage_table">
   <tr>
     <th>Chef</th>
@@ -7,8 +8,8 @@
   <% @users.each do |chef|%>
     <tr>
       <td><%= link_to chef.name, '/' %></td>
-      <td><%= chef.location_lat %></td>
-      <td><%= chef.location_lon %></td>
+      <td><%= sprintf("%.3f",chef.location_lat) %></td>
+      <td><%= sprintf("%.3f",chef.location_lon) %></td>
     </tr>
   <% end %>
 </table>
