@@ -61,11 +61,17 @@ nav{
 
 .chefs {
   table-layout: fixed;
-  width: 100%;
+  width: 50%;
   border-collapse: collapse;
 }
 
 .chefs th{
   font-family: 'Rock Salt', cursive;
 }
-.chef td
+.chefs td{
+  text-align: center;
+}
+td:first-child{
+  text-align: left;
+  padding-left: 20px;
+}
