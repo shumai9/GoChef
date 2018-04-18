@@ -1,6 +1,8 @@
-<h2><%= @user.name %></h2>
-<br>
-<p> <%= @user.bio %> </p>
-<p> <%= @user.location_lat %> </p>
-<p> <%= @user.location_lon %> </p>
-<%= image_tag("#{@user.avatar}") %>
+<div class="bio-container">
+  <h2 class="bio-chef"><%= @user.name %></h2>
+  <br>
+  <p class="bio-bio"> <%= @user.bio %> </p>
+  <div>
+    <%= image_tag("#{@user.avatar}") %>
+  </div>
+</div>

@@ -111,4 +111,11 @@ a {
   text-decoration: none;
 }
 
+/* Bio Style */
 
+.bio-container{
+  background: url(/app/assets/images/food-background.jpeg);
+  background-repeat: no-repeat center center fixed;
+  position: relative;
+  background-size: cover;
+}
