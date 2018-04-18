@@ -7,12 +7,14 @@
     <th>Chef</th>
     <th>Location (lat)</th>
     <th>Location (lon)</th>
+    <th>Will Travel (Miles)</th>
   </tr>
   <% @users.each do |chef|%>
     <tr>
-      <td><%= link_to chef.name, '/' %></td>
+      <td><%= link_to chef.name, "/users/#{chef.id}" %></td>
       <td><%= sprintf("%.3f",chef.location_lat) %></td>
       <td><%= sprintf("%.3f",chef.location_lon) %></td>
+      <td><%= chef.will_travel %></td>
     </tr>
   <% end %>
 </table>
