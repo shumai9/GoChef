@@ -56,6 +56,16 @@
     <%= f.text_field :price_per_head, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_field :bio, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Will Travel (Miles)" %><br />
+    <%= f.text_field :will_travel, autocomplete: "off" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

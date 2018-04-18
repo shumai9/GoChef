@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20180416112844) do
     t.float "location_lon", null: false
     t.integer "max_party_size"
     t.integer "price_per_head"
+    t.text "bio"
+    t.integer "will_travel"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
