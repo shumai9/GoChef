@@ -12,6 +12,7 @@
 #header {
   position: relative;
   height: 110px;
+  background-color: white;
   border-bottom: 2px solid #000;
 }
 #header img {
@@ -113,8 +114,12 @@ a {
 
 /* Bio Style */
 
-.bio-container{
-  background: url(/app/assets/images/food-background.jpeg);
+.bio-container {
+  height: 1000px;
+  margin-top: -300px;
+  margin-left: -10px;
+  z-index: -1;
+  background-image: url("food-background.jpeg");
   background-repeat: no-repeat center center fixed;
   position: relative;
   background-size: cover;
@@ -123,4 +128,10 @@ a {
   height: 300px;
   width: 300px;
   position: relative;
+}
+#avatar {
+  margin-top: 150px;
+  margin-left: 600px;
+  height: 25%;
+  width: 25%;
 }
