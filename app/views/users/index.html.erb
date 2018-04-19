@@ -1,7 +1,8 @@
-<h2>Hello <%= current_user.name %>, welcome to Go Chef!</h2>
-<br>
-<p>Click <%= link_to "here", edit_user_registration_path %> to view your profile</p>
-
+<% if user_signed_in? %>
+  <h2>Hello <%= current_user.name %>, welcome to Go Chef!</h2>
+  <br>
+  <p>Click <%= link_to "here", edit_user_registration_path %> to view your profile</p>
+  <%end%>
 <table id="homepage_table">
   <tr>
     <th>Chef</th>
