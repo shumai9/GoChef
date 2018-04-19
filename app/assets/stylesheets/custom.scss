@@ -3,6 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background: no-repeat center bottom fixed url("food-background.jpeg");
+  position: relative;
+  background-size: cover;
+}
+
 .content{
   margin-top: 10px;
   margin-left: 10px;
@@ -13,6 +20,7 @@
   position: relative;
   height: 110px;
   border-bottom: 2px solid #000;
+  background:rgba(255, 255, 255, 0.5);
 }
 #header img {
   position: relative;
@@ -68,9 +76,11 @@ nav{
 .chefs th{
   font-family: 'Rock Salt', cursive;
 }
+
 .chefs td{
   text-align: center;
 }
+
 td:first-child{
   text-align: left;
   padding-left: 20px;
@@ -112,30 +122,23 @@ a {
 }
 
 /* Bio Style */
-
-.bio-container {
-  height: 1000px;
-  margin-top: -300px;
-  margin-left: -10px;
-  z-index: -1;
-  background-image: url("food-background.jpeg");
-  background-repeat: no-repeat center center fixed;
-  position: relative;
-  background-size: cover;
-}
 #mapid{
   height: 300px;
   width: 300px;
   position: relative;
 }
 
-.portrait {
-  margin-top: 250px;
-  margin-left: 600px;
-  height: 25%;
-  border-radius: 50%;
-  overflow: hidden;
-  height: 250px;
-  width: 250px;
-  background-size: cover;
+.chef-view {
+  .portrait {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+  }
 }
+
+
+
+
+

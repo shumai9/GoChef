@@ -1,7 +1,6 @@
-<div class="bio-container">
-  <h2 class="bio-chef"><%= @user.name %></h2>
-  <br>
-  <p class="bio-bio"> <%= @user.bio %> </p>
+<div class="chef-view">
+  <h2><%= @user.name %></h2>
+  <p class="bio"> <%= @user.bio %> </p>
   <div class="portrait" style="background-image:url(<%= image_path(@user.avatar) %>)"></div>
 </div>
 
