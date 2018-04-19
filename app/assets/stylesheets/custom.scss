@@ -12,7 +12,6 @@
 #header {
   position: relative;
   height: 110px;
-  background-color: white;
   border-bottom: 2px solid #000;
 }
 #header img {
@@ -129,9 +128,14 @@ a {
   width: 300px;
   position: relative;
 }
-#avatar {
-  margin-top: 150px;
+
+.portrait {
+  margin-top: 250px;
   margin-left: 600px;
   height: 25%;
-  width: 25%;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 250px;
+  width: 250px;
+  background-size: cover;
 }
