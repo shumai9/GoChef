@@ -41,6 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.text :bio
       t.integer :will_travel
       t.string :avatar
+      t.integer :radius
 
       t.timestamps null: false
     end

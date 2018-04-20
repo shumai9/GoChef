@@ -12,10 +12,44 @@
   </tr>
   <% @users.each do |chef|%>
     <tr>
-      <td><%= link_to chef.name, "/users/#{chef.id}" %></td>
-      <td><%= sprintf("%.3f",chef.location_lat) %></td>
-      <td><%= sprintf("%.3f",chef.location_lon) %></td>
-      <td><%= chef.will_travel %></td>
+      <td class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></td>
+      <td class="lat"><%= sprintf("%.3f",chef.location_lat) %></td>
+      <td class="lon"><%= sprintf("%.3f",chef.location_lon) %></td>
+      <td class="rad"><%= chef.radius %></td>
     </tr>
   <% end %>
+  <h3>All Chef Locations</h3>
+  <div id="mapid"></div>
+  <script type="text/javascript">
+    var lat = document.querySelectorAll('.lat');
+    var lon = document.querySelectorAll('.lon');
+    var rad = document.querySelectorAll('.rad');
+    var chef = document.querySelectorAll('.chef');
+    var mymap = L.map('mapid').setView([51.505, -0.115], 4);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoidGhvbWFzY2FsbHVtYnJvb2siLCJhIjoiY2pnNm9hOTUxMjlyNjJ3b2gybXl2OGpvNSJ9.6FSzBSK3H6063Afj38PSIQ'
+    }).addTo(mymap);
+    var addCircle = function (lat, lon, name, rad){
+      let circle = L.circle([lat, lon], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: rad*1609.34
+      }).addTo(mymap);
+      circle.bindPopup(name);
+    }
+    var i=0;
+    lat.forEach(function(index){
+      let latitude = index.innerHTML;
+      let longitude = lon[i].innerHTML;
+      let name = chef[i].innerHTML;
+      let radius = rad[i].innerHTML;
+      i ++;
+      addCircle(latitude,longitude, name, radius);
+    });
+
+  </script>
 </table>
