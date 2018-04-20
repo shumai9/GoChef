@@ -37,7 +37,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.float :location_lat, null: false
       t.float :location_lon, null: false
       t.integer :max_party_size
-      t.integer :price_per_head
+      t.string :price_per_head
+      t.float :rating
       t.text :bio
       t.integer :will_travel
       t.string :avatar

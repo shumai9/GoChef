@@ -3,21 +3,22 @@
   <br>
   <p>Click <%= link_to "here", edit_user_registration_path %> to view your profile</p>
   <%end%>
-<table id="homepage_table">
-  <tr>
-    <th>Chef</th>
-    <th>Location (lat)</th>
-    <th>Location (lon)</th>
-    <th>Will Travel (Miles)</th>
-  </tr>
-  <% @users.each do |chef|%>
-    <tr>
-      <td class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></td>
-      <td class="lat"><%= sprintf("%.3f",chef.location_lat) %></td>
-      <td class="lon"><%= sprintf("%.3f",chef.location_lon) %></td>
-      <td class="rad"><%= chef.radius %></td>
-    </tr>
-  <% end %>
+
+    <% @users.each do |chef|%>
+      <div class="chef-container">
+        <% unless chef.avatar.blank? %>
+          <div class="thumbnail" style="background-image:url(<%= image_path(chef.avatar) %>)"></div>
+        <% end %>
+        <h2 class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></h2>
+        <h2 class="lat"><%= chef.location_lat %></h2>
+        <h2 class="lon"><%= chef.location_lon %></h2>
+        <h2 class="rad"><%= chef.radius %></h2>
+        <h2><%= chef.rating %></h2>
+        <h2><%= chef.price_per_head %></h2>
+        <h2><%= chef.max_party_size %></h2>
+      </div>
+    <% end %>
+
   <h3>All Chef Locations</h3>
   <div id="mapid"></div>
   <script type="text/javascript">
@@ -50,6 +51,4 @@
       i ++;
       addCircle(latitude,longitude, name, radius);
     });
-
   </script>
-</table>

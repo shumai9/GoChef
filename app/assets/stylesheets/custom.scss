@@ -15,13 +15,16 @@ body {
   margin-left: 10px;
   line-height: 1.5;
 }
+
 /* header */
 #header {
   position: relative;
   height: 110px;
+  width: 100%;
   border-bottom: 2px solid #000;
   background:rgba(255, 255, 255, 0.5);
 }
+
 #header img {
   position: relative;
   display: inline-block;
@@ -35,17 +38,21 @@ body {
   top: 15px;
   font-size: 4.5rem;
   font-family: Ubuntu;
+  text-align: center;
 }
+
 nav{
   position: relative;
   display: inline;
 }
+
 .nav-links {
   display: inline-flex;
   text-decoration: none;
   list-style: none;
   float: right;
 }
+
 .nav-links a{
   text-decoration: none;
   padding: 0 10px;
@@ -58,87 +65,82 @@ nav{
 .field{
   padding: 5px;
 }
+
 .actions{
   padding: 10px 0;
 }
+
 .devise-links a {
   text-decoration: none;
 }
 
 /* chefs */
 
-.chefs {
-  table-layout: fixed;
-  width: 50%;
-  border-collapse: collapse;
-}
-
-.chefs th{
-  font-family: 'Rock Salt', cursive;
-}
-
-.chefs td{
-  text-align: center;
-}
-
-td:first-child{
-  text-align: left;
-  padding-left: 20px;
-}
-
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 15px;
-    font-size: 1.3em;
-}
-
-table {
-    border: 5px solid black;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    width: 85%;
-}
-
-td {
-  border-right: 5px solid black;
-  text-align: center;
-}
-
-table tr:nth-child(even) {
-    background-color: #eee;
-}
-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-table th {
-    color: white;
-    background-color: black;
-}
-
-a {
-  text-decoration: none;
-}
 
 /* Bio Style */
-#mapid{
-  height: 300px;
-  width: 300px;
-  position: relative;
-}
 
 .chef-view {
+
+  margin-left: 20px;
+
+  h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    width: 75%;
+    font-size: 20px;
+  }
+
   .portrait {
     border-radius: 50%;
     overflow: hidden;
     height: 250px;
     width: 250px;
     background-size: cover;
+    float: right;
+    margin-right: 60px;
+    margin-top: -100px;
   }
 }
 
+/* Home Page */
+
+.chef-container {
+  height: 100px;
+  width: 100%;
 
 
+h2 {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  padding: 15px;
 
 
+  }
+
+  a {
+  text-decoration: none;
+  color: black;
+}
+
+div.thumbnail {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 75px;
+    width: 75px;
+    background-size: cover;
+    float: left;
+  }
+
+}
+
+/* map */
+
+#mapid{
+  height: 300px;
+  width: 300px;
+  position: relative;
+}
