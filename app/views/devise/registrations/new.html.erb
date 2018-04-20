@@ -28,14 +28,22 @@
 
   <div class="field">
     <%= f.label :location_lat %><br />
-    <%= f.text_field :location_lat, autofocus: true %>
+    <%= f.text_field :location_lat, autofocus: true, class:"lat"%>
   </div>
 
   <div class="field">
     <%= f.label :location_lon %><br />
-    <%= f.text_field :location_lon, autofocus: true %>
+    <%= f.text_field :location_lon, autofocus: true, class:"lon"%>
   </div>
 
+  <div class="field">
+    <%= f.label :radius %><br />
+    <%= f.text_field :radius, autocomplete: "off", class:"rad" %>
+  </div>
+
+  <h3>Click on map to set Catering Region (Uses selected radius)</h3>
+
+  <div id="mapid"></div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
@@ -44,3 +52,38 @@
 <div class="devise-links">
   <%= render "devise/shared/links" %>
 </div>
+<script type="text/javascript">
+  var lat = document.querySelector('.lat');
+  var lon = document.querySelector('.lon');
+  var rad = document.querySelector('.rad');
+  var circle = undefined;
+  var addCircle = function (event) {
+    circle = L.circle(event.latlng, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: rad.value*1609.34
+    }).addTo(mymap);
+    circle.bindPopup("Your selected catering region.");
+  }
+  var mymap = L.map('mapid').setView([51.505, -0.115], 8);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoidGhvbWFzY2FsbHVtYnJvb2siLCJhIjoiY2pnNm9hOTUxMjlyNjJ3b2gybXl2OGpvNSJ9.6FSzBSK3H6063Afj38PSIQ'
+  }).addTo(mymap);
+  function onMapClick(event) {
+    lat.value = event.latlng.lat;
+    lon.value = event.latlng.lng;
+    if (circle == undefined){
+      addCircle(event);
+      alert("Added catering region");
+    }else {
+      circle.remove();
+      addCircle(event);
+      alert("Changed catering region");
+    }
+  }
+  mymap.addEventListener('click', onMapClick);
+</script>
