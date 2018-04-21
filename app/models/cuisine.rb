@@ -1,3 +1,4 @@
 class Cuisine < ApplicationRecord
-  has_and_belongs_to_many :users
+  has_many :skillsets
+  has_many :users, through: :skillsets
 end

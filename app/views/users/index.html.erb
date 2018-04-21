@@ -2,6 +2,7 @@
   <h2>Hello <%= current_user.name %>, welcome to Go Chef!</h2>
   <br>
   <p>Click <%= link_to "here", edit_user_registration_path %> to view your profile</p>
+   <p>Click <%= link_to "here", new_skillset_path %> to view your skillsets</p>
   <%end%>
 
     <% @users.each do |chef|%>
