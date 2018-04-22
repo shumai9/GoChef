@@ -28,7 +28,6 @@ class SkillsetManager
     unchecked_cuisines.each do |cuisine|
       skillset = Skillset.find_by(cuisine_id: cuisine.id, user_id: @user.id)
       if skillset
-        binding.pry
         skillset.destroy
       end
     end
