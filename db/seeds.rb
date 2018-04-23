@@ -35,3 +35,15 @@ User.create!(name: "Delia Smith", location_lat: '49.321', location_lon: '-1.5', 
 At age 21, she spent time washing up in a restaurant, and this experience piqued her interest in cooking. However, she says it was when
 a boyfriend kept praising his former girlfriend's talents in the kitchen that she got fed up and started cooking seriously.", avatar: 'delia-smith.jpg',
 price_per_head: "£££", max_party_size: 10, rating: 10.0,radius: '15')
+
+
+Cuisine.create!(food:'Chinese')
+Cuisine.create!(food:'Indian')
+Cuisine.create!(food:'Mexican')
+Cuisine.create!(food:'Spanish')
+Cuisine.create!(food:'French')
+Cuisine.create!(food:'Greek')
+Cuisine.create!(food:'Italian')
+Cuisine.create!(food:'Eritrean')
+Cuisine.create!(food:'Vegan')
+Cuisine.create!(food:'Desserts')

@@ -9,4 +9,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :location_lat, :location_lon, :email, :password, :password_confirmation, :current_password, :max_party_size, :price_per_head, :bio, :will_travel, :avatar, :radius] )
   end
 
+
+
 end
