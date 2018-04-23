@@ -1,19 +1,16 @@
 <% if user_signed_in? %>
   <h2>Hello <%= current_user.name %>, welcome to Go Chef!</h2>
   <br>
-  <p>Click <%= link_to "here", edit_user_registration_path %> to view your profile</p>
+  <p>Click <%= link_to "here", "/users/#{current_user.id}/edit" %> to view your profile</p>
    <p>Click <%= link_to "here", new_skillset_path %> to view your skillsets</p>
   <%end%>
-  <h2>All Chefs</h2>  
+  <h2>All Chefs</h2>
   <% @users.each do |chef|%>
     <div class="chef-container">
       <% unless chef.avatar.blank? %>
         <div class="thumbnail" style="background-image:url(<%= image_path(chef.avatar) %>)"></div>
       <% end %>
       <h2 class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></h2>
-      <h2 class="lat"><%= chef.location_lat %></h2>
-      <h2 class="lon"><%= chef.location_lon %></h2>
-      <h2 class="rad"><%= chef.radius %></h2>
       <h2><%= chef.rating %></h2>
       <h2><%= chef.price_per_head %></h2>
       <h2><%= chef.max_party_size %></h2>
@@ -25,12 +22,9 @@
 
 
   <script type="text/javascript">
-    var rad = document.querySelector('.rad');
-    var name = document.querySelectorAll('.chef');
     var chefs = <%= raw JSON.generate(@users.all.map(&:as_json))  %>;
     var mymap = L.map('home-map').setView([51.505, -0.115], 4);
     var layer = new L.StamenTileLayer("terrain");
-    var chefCircles = [];
     mymap.addLayer(layer);
     var addCircle = function (chef){
       circle = L.circle([chef.location_lat, chef.location_lon], {

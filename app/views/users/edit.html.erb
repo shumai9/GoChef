@@ -1,0 +1,117 @@
+<h2>Edit <%= current_user.name %></h2>
+<%= form_for(current_user, url: user_path, html: { method: :put }) do |f| %>
+  <% if current_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% current_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- Adding new fields for editing Chef profile -->
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "off" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :location_lat %><br />
+    <%= f.text_field :location_lat, autocomplete: "off", class:"lat"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :location_lon %><br />
+    <%= f.text_field :location_lon, autocomplete: "off", class:"lon"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :radius_kilometes%><br />
+    <%= f.text_field :radius, autocomplete: "off", class:"rad" %>
+  </div>
+
+  <h3>Click on map to set Catering Region (Uses selected radius)</h3>
+
+  <div id="mapid"></div>
+  <div class="field">
+    <%= f.label :max_party_size %><br />
+    <%= f.text_field :max_party_size, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price_per_head %><br />
+    <%= f.text_field :price_per_head, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_field :bio, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+  <!-- <h4 class="h4"> Hello<h4> -->
+<% end %>
+
+<%= link_to "Back", :back %>
+
+
+<script type="text/javascript">
+  var lat = document.querySelector('.lat');
+  var lon = document.querySelector('.lon');
+  var rad = document.querySelector('.rad');
+  var circle = undefined;
+  var addCircle = function (event) {
+    circle = L.circle(event.latlng, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: rad.value*1609.34
+    }).addTo(mymap);
+    circle.bindPopup("Your selected catering region.");
+  }
+  var mymap = L.map('mapid').setView([51.505, -0.115], 8);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoidGhvbWFzY2FsbHVtYnJvb2siLCJhIjoiY2pnNm9hOTUxMjlyNjJ3b2gybXl2OGpvNSJ9.6FSzBSK3H6063Afj38PSIQ'
+  }).addTo(mymap);
+  function onMapClick(event) {
+    lat.value = event.latlng.lat;
+    lon.value = event.latlng.lng;
+    if (circle == undefined){
+      addCircle(event);
+      alert("Added catering region");
+    }else {
+      circle.remove();
+      addCircle(event);
+      alert("Changed catering region");
+    }
+  }
+
+  mymap.addEventListener('click', onMapClick);
+
+  // For select cusine box:
+
+      var expanded = false;
+
+    function showCheckboxes() {
+      var checkboxes = document.getElementById("checkboxes");
+      if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+      } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+      }
+    }
+</script>
