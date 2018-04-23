@@ -1,7 +1,7 @@
 <div class="chef-view">
    <h1><%= @user.name %></h1>
     <p class="bio"> <%= @user.bio %> </p>
-</div>
+      <div class="portrait" style="background-image:url(<%= image_path(@user.avatar) %>)"></div>
 <h1>Your skillsets</h1>
 <div id="memberships">
   <ul>
@@ -9,5 +9,11 @@
       <li><%= cuisine.food %></li>
     <% end %>
   </ul>
+</div>
+<div id="gallery">
+  <%= image_tag("basil.png") %>
+  <%= image_tag("fawlty-towers-rex.jpg") %>
+  <%= image_tag("manuel.jpg") %>
+  <%= image_tag("goosestep.jpg") %>
 </div>
 

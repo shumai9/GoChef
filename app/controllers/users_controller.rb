@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user == current_user
+      binding.pry
       if @user.update_attributes(user_params)
         redirect_to user_path(@user)
       else
@@ -31,6 +32,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :location_lat, :location_lon,
-       :max_party_size, :price_per_head, :bio, :avatar, :radius)
+       :max_party_size, :price_per_head, :bio, :avatar, :radius, {images: []})
   end
 end

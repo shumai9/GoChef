@@ -55,6 +55,13 @@
     <%= f.file_field :avatar %>
   </div>
 
+  <div class="field">
+    <%= f.label :images %><br>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
