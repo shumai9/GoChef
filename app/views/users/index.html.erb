@@ -4,52 +4,77 @@
   <p>Click <%= link_to "here", edit_user_registration_path %> to view your profile</p>
    <p>Click <%= link_to "here", new_skillset_path %> to view your skillsets</p>
   <%end%>
-
-    <% @users.each do |chef|%>
-      <div class="chef-container">
-        <% unless chef.avatar.blank? %>
-          <div class="thumbnail" style="background-image:url(<%= image_path(chef.avatar) %>)"></div>
-        <% end %>
-        <h2 class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></h2>
-        <h2 class="lat"><%= chef.location_lat %></h2>
-        <h2 class="lon"><%= chef.location_lon %></h2>
-        <h2 class="rad"><%= chef.radius %></h2>
-        <h2><%= chef.rating %></h2>
-        <h2><%= chef.price_per_head %></h2>
-        <h2><%= chef.max_party_size %></h2>
-      </div>
-    <% end %>
-
+  <h2>All Chefs</h2>  
+  <% @users.each do |chef|%>
+    <div class="chef-container">
+      <% unless chef.avatar.blank? %>
+        <div class="thumbnail" style="background-image:url(<%= image_path(chef.avatar) %>)"></div>
+      <% end %>
+      <h2 class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></h2>
+      <h2 class="lat"><%= chef.location_lat %></h2>
+      <h2 class="lon"><%= chef.location_lon %></h2>
+      <h2 class="rad"><%= chef.radius %></h2>
+      <h2><%= chef.rating %></h2>
+      <h2><%= chef.price_per_head %></h2>
+      <h2><%= chef.max_party_size %></h2>
+    </div>
+  <% end %>
   <h3>All Chef Locations</h3>
-  <div id="mapid"></div>
+  <h4>Click on the map to see if chefs serve your location!</h4>
+  <div id="home-map"></div>
+
+
   <script type="text/javascript">
-    var lat = document.querySelectorAll('.lat');
-    var lon = document.querySelectorAll('.lon');
-    var rad = document.querySelectorAll('.rad');
-    var chef = document.querySelectorAll('.chef');
-    var mymap = L.map('mapid').setView([51.505, -0.115], 4);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoidGhvbWFzY2FsbHVtYnJvb2siLCJhIjoiY2pnNm9hOTUxMjlyNjJ3b2gybXl2OGpvNSJ9.6FSzBSK3H6063Afj38PSIQ'
-    }).addTo(mymap);
-    var addCircle = function (lat, lon, name, rad){
-      let circle = L.circle([lat, lon], {
+    var rad = document.querySelector('.rad');
+    var name = document.querySelectorAll('.chef');
+    var chefs = <%= raw JSON.generate(@users.all.map(&:as_json))  %>;
+    var mymap = L.map('home-map').setView([51.505, -0.115], 4);
+    var layer = new L.StamenTileLayer("terrain");
+    var chefCircles = [];
+    mymap.addLayer(layer);
+    var addCircle = function (chef){
+      circle = L.circle([chef.location_lat, chef.location_lon], {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
-      radius: rad*1609.34
+      radius: 1,
       }).addTo(mymap);
-      circle.bindPopup(name);
+      circle.bindPopup(`<a href="/users/${chef.id}" >${chef.name}</a>`);
     }
-    var i=0;
-    lat.forEach(function(index){
-      let latitude = index.innerHTML;
-      let longitude = lon[i].innerHTML;
-      let name = chef[i].innerHTML;
-      let radius = rad[i].innerHTML;
-      i ++;
-      addCircle(latitude,longitude, name, radius);
+    function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+      var R = 6371; // Radius of the earth in km
+      var dLat = deg2rad(lat2-lat1);  // deg2rad below
+      var dLon = deg2rad(lon2-lon1);
+      var a =
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon/2) * Math.sin(dLon/2)
+        ;
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      var d = R * c; // Distance in km
+      return d;
+    }
+
+    function deg2rad(deg) {
+      return deg * (Math.PI/180)
+    }
+    function onMapClick(event) {
+      mymap.eachLayer(function (layer) {
+        mymap.removeLayer(layer);
+      });
+      mymap.addLayer(layer);
+      console.log("map clicked");
+      chefs.forEach(function(chef){
+        if (getDistanceFromLatLonInKm(chef.location_lat, chef.location_lon, event.latlng.lat, event.latlng.lng) < chef.radius){
+          addCircle(chef);
+        };
+      });
+    }
+
+    chefs.forEach(function(chef){
+      addCircle(chef);
     });
+    mymap.addEventListener('click', onMapClick);
+
+
   </script>

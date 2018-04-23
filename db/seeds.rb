@@ -27,7 +27,7 @@ User.create!(name: 'Hairy Bikers', location_lat: '50.321', location_lon: '1.5', 
 "The Hairy Bikers are David Myers and Simon King, two northern blokes with a passion for cooking and food. The pair began their TV
  careers working behind the scenes, Si as a first assistant director and locations manager for film and television and Dave as a
  BBC make-up artist specialising in prosthetics. It was on the set of a TV drama that they first met and became friends.", avatar: 'hairy-bikers.jpg',
- price_per_head: "££", max_party_size: 30)
+ price_per_head: "££", max_party_size: 30, radius: 7)
 
 
 User.create!(name: "Delia Smith", location_lat: '49.321', location_lon: '-1.5', email: 'norwich@hot.com', password: 'passss', bio:
