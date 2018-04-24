@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <h2>Hello <%= current_user.name %>, welcome to Go Chef!</h2>
-  <%end%>
+<%end%>
 <table>
     <tr>
       <th></th>
@@ -73,6 +73,4 @@
       addCircle(chef);
     });
     mymap.addEventListener('click', onMapClick);
-
-
   </script>

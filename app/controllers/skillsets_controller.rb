@@ -10,4 +10,8 @@ class SkillsetsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def options
+   @cuisines = Cuisine.new
+  end
+
 end

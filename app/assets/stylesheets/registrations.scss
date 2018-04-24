@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.multiselect {
-  width: 200px;
+#block-1,#block-2, #block-3{
+ width: auto;
+ background:#ddd;
 }
 
 .selectBox {
@@ -23,7 +24,7 @@
   bottom: 0;
 }
 
-#checkboxes {
+#checkboxes,{
   display: none;
   border: 1px #dadada solid;
 }
@@ -34,4 +35,15 @@
 
 #checkboxes label:hover {
   background-color: #1e90ff;
+}
+.Pro{
+  margin-top: 50px;
+  padding: 20px;  
+  text-align: left;
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-rows: repeat(3, auto);
+  grid-gap: 20px 15px;
+  background:#ddd;
 }
