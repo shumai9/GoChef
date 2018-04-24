@@ -16,9 +16,6 @@ class ImagesController < ApplicationController
     redirect_to root_path(current_user)
   end
 
-  def destroy
-  end
-
 
 
 end

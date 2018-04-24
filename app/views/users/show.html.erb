@@ -11,9 +11,8 @@
   </ul>
 </div>
 <div id="gallery">
-  <%= image_tag("meal.jpg") %>
-  <%= image_tag("mash.jpg") %>
-  <%= image_tag("fritters.jpg") %>
-  <%= image_tag("egg.jpg") %>
+  <%=@user.images.each do |pic| %>
+     <div class="selection" style="background-image: url(<%= image_path(pic.picture) %>)"></div>
+  <% end %>
 </div>
 
