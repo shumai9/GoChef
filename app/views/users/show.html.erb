@@ -2,7 +2,7 @@
    <h1><%= @user.name %></h1>
     <p class="bio"> <%= @user.bio %> </p>
       <div class="portrait" style="background-image:url(<%= image_path(@user.avatar) %>)"></div>
-<h1>Your skillsets</h1>
+<h2>Cuisines:</h2>
 <div id="memberships">
   <ul>
     <% @user.cuisines.each do |cuisine| %>
@@ -11,9 +11,9 @@
   </ul>
 </div>
 <div id="gallery">
-  <%= image_tag("basil.png") %>
-  <%= image_tag("fawlty-towers-rex.jpg") %>
-  <%= image_tag("manuel.jpg") %>
-  <%= image_tag("goosestep.jpg") %>
+  <%= image_tag("meal.jpg") %>
+  <%= image_tag("mash.jpg") %>
+  <%= image_tag("fritters.jpg") %>
+  <%= image_tag("egg.jpg") %>
 </div>
 

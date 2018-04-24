@@ -19,14 +19,18 @@ td:first-child{
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 0;
     border-collapse: collapse;
     padding: 15px;
     font-size: 1.3em;
 }
 
+tr {
+   opacity: 1;
+}
+
 table {
-    border: 5px solid black;
+    border: 0;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
@@ -34,22 +38,7 @@ table {
 }
 
 td {
-  border-right: 5px solid black;
   text-align: center;
-}
-
-table tr:nth-child(even) {
-    background-color: #eee;
-    opacity: 0.5;
-}
-
-table tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-table th {
-    color: white;
-    background-color: black;
 }
 
 a {

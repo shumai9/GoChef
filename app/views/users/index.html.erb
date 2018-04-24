@@ -1,24 +1,28 @@
 <% if user_signed_in? %>
   <h2>Hello <%= current_user.name %>, welcome to Go Chef!</h2>
-  <br>
-  <p>Click <%= link_to "here", edit_user_path(current_user.id) %> to view your profile</p>
-   <p>Click <%= link_to "here", new_skillset_path %> to view your skillsets</p>
   <%end%>
-  <h2>All Chefs</h2>
+<table>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Rating</th>
+      <th>Price</th>
+      <th>Caters up to</th>
+    </tr>
   <% @users.each do |chef|%>
-    <div class="chef-container">
-      <% unless chef.avatar.blank? %>
+    <tr>
+      <td><% unless chef.avatar.blank? %>
         <div class="thumbnail" style="background-image:url(<%= image_path(chef.avatar) %>)"></div>
-      <% end %>
-      <h2 class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></h2>
-      <h2><%= chef.rating %></h2>
-      <h2><%= chef.price_per_head %></h2>
-      <h2><%= chef.max_party_size %></h2>
-    </div>
-  <% end %>
-  <h3>All Chef Locations</h3>
-  <h4>Click on the map to see if chefs serve your location!</h4>
-  <div id="home-map"></div>
+        <% end %></td>
+      <td><h4 class="chef"><%= link_to chef.name, "/users/#{chef.id}" %></h4></td>
+      <td><h4><%= chef.rating %></h4></td>
+      <td><h4><%= chef.price_per_head %></h4></td>
+      <td><h4><%= chef.max_party_size %></h4></td>
+    <% end %></tr>
+</table>
+ <!--  <h3>All Chef Locations</h3>
+  <h4>Click on the map to see if chefs serve your location!</h4> -->
+<!--   <div id="home-map"></div> -->
 
 
   <script type="text/javascript">

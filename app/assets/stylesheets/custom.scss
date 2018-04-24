@@ -219,7 +219,7 @@ div.thumbnail {
   font-size:300%;
   background:transparent;
   border:none;
-  color:#FFF;
+  display: none;
 }
 
 .carousel .controls .next{
@@ -230,6 +230,18 @@ div.thumbnail {
 .demo{
   font-size: 2.0rem;
 }
+
+#gallery{
+  top: 450px;
+  left: 300px;
+  position: absolute;
+  margin: auto;
+  background-size: cover;
+  height: 190px;
+  opacity: 0.8;
+}
+
+
 
 
 

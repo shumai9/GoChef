@@ -55,17 +55,37 @@
     <%= f.file_field :avatar %>
   </div>
 
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+  <!-- <h4 class="h4"> Hello<h4> -->
+<% end %>
+
+<!-- Gallery form -->
+
+<%= form_for(current_user, url: images_path, html: { method: :post }) do |f| %>
+  <% if current_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% current_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
   <div class="field">
     <%= f.label :images %><br>
     <%= f.file_field :images, multiple: true %>
   </div>
 
-
-
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-  <!-- <h4 class="h4"> Hello<h4> -->
+
 <% end %>
 
 <%= link_to "Back", :back %>
