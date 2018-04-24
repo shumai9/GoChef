@@ -12,7 +12,8 @@
 </div>
 <div id="gallery">
   <%=@user.images.each do |pic| %>
-     <div class="selection" style="background-image: url(<%= image_path(pic.picture) %>)"></div>
+    <% binding.pry %>
+     <div class="selection" style="background-image: url(<%= image_path(pic.picture.url) %>)"></div>
   <% end %>
 </div>
 
