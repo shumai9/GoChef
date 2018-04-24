@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 20180423180604) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cuisines", force: :cascade do |t|
     t.string "food"
     t.datetime "created_at", null: false
@@ -64,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180423180604) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 
   add_foreign_key "images", "users"
   add_foreign_key "skillsets", "cuisines"
