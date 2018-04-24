@@ -23,9 +23,9 @@
  <!--  <h3>All Chef Locations</h3>
   <h4>Click on the map to see if chefs serve your location!</h4> -->
 <!--   <div id="home-map"></div> -->
-
-
   <script type="text/javascript">
+    var rad = document.querySelector('.rad');
+    var name = document.querySelectorAll('.chef');
     var chefs = <%= raw JSON.generate(@users.all.map(&:as_json))  %>;
     var mymap = L.map('home-map').setView([51.505, -0.115], 4);
     var layer = new L.StamenTileLayer("terrain");
