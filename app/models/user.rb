@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :skillsets
+  has_many :images
   has_many :cuisines, through: :skillsets
 
   def as_json

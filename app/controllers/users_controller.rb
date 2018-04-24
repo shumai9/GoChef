@@ -31,6 +31,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :location_lat, :location_lon,
-       :max_party_size, :price_per_head, :bio, :avatar, :radius)
+       :max_party_size, :price_per_head, :bio, :avatar, :radius, {images: []})
   end
 end
